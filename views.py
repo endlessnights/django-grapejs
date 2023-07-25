@@ -3,6 +3,10 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 import json
 
+def render_grapejs(request):
+    index = Page.objects.first()
+    return render(request, 'front/indexpage.html', {'index': index})
+
 def grapejs(request, page_id):
     page_instance = get_object_or_404(Page, pk=page_id)
     print(page_instance)
